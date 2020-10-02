@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="input" />
+    <button id="add">Add</button>
+    <button id="display">Display</button>
+    <hr />
+    <div id="view"></div>
+
+    <script>
+      const input = document.getElementById("input");
+      const view = document.getElementById("view");
+
+      const arr = [];
+
+      document.getElementById("add").addEventListener("click", () => {
+        arr.push(input.value);
+        input.value = "";
+      });
+
+      document.getElementById("display").addEventListener("click", () => {
+        let buffer = "";
+        arr.forEach((val, i) => (buffer += `<p>Element ${i} = ${val}`));
+        view.innerHTML = buffer;
+      });
+    </script>
+  </body>
+</html>
