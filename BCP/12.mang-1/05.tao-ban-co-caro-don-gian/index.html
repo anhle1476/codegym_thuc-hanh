@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Caro Simple Game</h1>
+
+    <div id="view"></div>
+    <button id="change">Change Value</button>
+    <script>
+      const viewDOM = document.getElementById("view");
+
+      // initial setup
+      const board = [];
+      for (let i = 0; i < 5; i++) {
+        board.push([0, 0, 0, 0, 0]);
+      }
+
+      const updateView = () => {
+        let buffer = "";
+
+        board.forEach((row) => {
+          buffer += "<p>";
+          row.forEach((cell) => (buffer += cell + " "));
+          buffer += "</p>";
+        });
+
+        viewDOM.innerHTML = buffer;
+      };
+
+      updateView();
+
+      // change handle
+      document.getElementById("change").addEventListener("click", () => {
+        let x = parseInt(prompt("X: "));
+        let y = parseInt(prompt("Y: "));
+
+        if (board[x][y] === undefined) {
+          alert("Position invalid");
+        } else {
+          board[x][y] = board[x][y] === 0 ? "x" : 0;
+        }
+
+        updateView();
+      });
+    </script>
+  </body>
+</html>
