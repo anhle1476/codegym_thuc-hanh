@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      table,
+      tr,
+      td {
+        border: 1px solid black;
+      }
+
+      td {
+        width: 100px;
+        padding: 5px;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let buffer = "<table>";
+
+      for (let i = 1; i <= 9; i++) {
+        buffer += "<tr>";
+        for (let j = 2; j <= 9; j++) {
+          buffer += `<td>${j}x${i}=${j * i}</td>`;
+        }
+        buffer += "</tr>";
+      }
+
+      buffer += "</table>";
+
+      document.write(buffer);
+    </script>
+  </body>
+</html>
