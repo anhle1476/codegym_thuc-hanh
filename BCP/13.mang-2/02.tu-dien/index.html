@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      input[type="text"] {
+        display: block;
+        margin-bottom: 10px;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Dictionary</h1>
+    <hr />
+    <form id="add">
+      <h3>Add words</h3>
+      <label for="word">Word</label>
+      <input id="word" name="word" type="text" />
+      <label for="definition">Definition</label>
+      <input id="definition" name="definition" type="text" />
+      <input type="submit" value="Add" />
+    </form>
+    <hr />
+    <form id="find">
+      <h3>Find word</h3>
+      <input id="findWord" type="search" />
+      <input type="submit" value="Find" />
+    </form>
+    <div id="result"></div>
+
+    <script>
+      const wordDOM = document.getElementById("word");
+      const definitionDOM = document.getElementById("definition");
+      const findWordDOM = document.getElementById("findWord");
+      const resultDOM = document.getElementById("result");
+
+      const wordsArr = [];
+      const definitionsArr = [];
+
+      // Add word
+      const addWordHandler = (e) => {
+        e.preventDefault();
+
+        // get input
+        const word = wordDOM.value;
+        const definition = definitionDOM.value;
+
+        // add into dict
+        if (word && definition && wordsArr.indexOf(word) === -1) {
+          wordsArr.push(word);
+          definitionsArr.push(definition);
+        } else {
+          alert("Word or definition invalid");
+        }
+
+        // reset fields
+        wordDOM.value = "";
+        definitionDOM.value = "";
+      };
+
+      document.getElementById("add").addEventListener("submit", addWordHandler);
+
+      // Find word
+      const findWordHandler = (e) => {
+        e.preventDefault();
+
+        const index = wordsArr.indexOf(findWordDOM.value);
+
+        resultDOM.innerText =
+          index === -1
+            ? "Word not found"
+            : `Definition: ${definitionsArr[index]}`;
+
+        findWordDOM.value = "";
+      };
+
+      document
+        .getElementById("find")
+        .addEventListener("submit", findWordHandler);
+    </script>
+  </body>
+</html>
