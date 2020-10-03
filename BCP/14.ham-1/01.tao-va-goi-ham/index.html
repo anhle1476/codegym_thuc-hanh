@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const processConfirm = (answer) =>
+        answer
+          ? "Excellent. We'll play a nice game of chess."
+          : "Maybe later then.";
+
+      let theAnswer = processConfirm(confirm("Shall we play a game?"));
+      alert(theAnswer);
+    </script>
+  </body>
+</html>
