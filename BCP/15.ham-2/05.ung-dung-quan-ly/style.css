@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+}
+
+button,
+.btn {
+  padding: 10px;
+  background-color: #50af50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+}
+
+/* Modal */
+#modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(100, 100, 100, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+
+#modal > div {
+  display: block;
+  background-color: #fff;
+  width: 300px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal input {
+  margin-bottom: 25px;
+  width: 250px;
+}
+
+#modal button {
+  float: right;
+  margin-left: 10px;
+}
+
+#modal-cancel {
+  background-color: #f00;
+}
+
+#modal.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* container */
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: auto;
+}
+
+.container > h1 {
+  text-align: center;
+}
+
+/* Add area */
+#add-area form {
+  background-color: #ddd;
+  padding: 20px 10px;
+}
+
+#new-product {
+  width: 300px;
+}
+
+/* Display area */
+#header {
+  font-weight: bold;
+}
+
+#header #number-of-products {
+  color: #f00;
+}
+
+#products .product,
+#header {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+}
+
+#products .product:nth-child(even) {
+  background-color: #ddd;
+}
+
+#products .product button {
+  margin-left: 10px;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="modal">
+      <div>
+        <h4>Change Product Name:</h4>
+        <form id="modal-form">
+          <input type="text" id="modal-input" />
+          <div>
+            <button type="button" id="modal-cancel">Cancel</button>
+            <button type="submit">OK</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="container">
+      <h1>Products Administrator</h1>
+      <div id="add-area">
+        <h3>Add new product</h3>
+        <form id="add-product">
+          <input id="new-product" type="text" />
+          <input type="submit" value="Add" class="btn" />
+        </form>
+      </div>
+      <hr />
+      <div id="display-area">
+        <h3>Display All Product</h3>
+        <div id="header">
+          <div>Product Name</div>
+          <div id="number-of-products">0 product</div>
+        </div>
+        <div id="products"></div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
