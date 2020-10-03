@@ -23,7 +23,7 @@
       const textArea = document.getElementById("text-area");
 
       let chars = 0;
-      // let prev = "";
+
       textArea.addEventListener("keydown", (e) => {
         e.preventDefault();
         chars = (chars + 1) % (SENTENCE.length + 1);
