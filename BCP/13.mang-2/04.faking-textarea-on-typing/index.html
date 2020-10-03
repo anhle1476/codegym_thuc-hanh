@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #container {
+        margin: 0 auto;
+        width: 400px;
+        text-align: center;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container">
+      <h2>Type something slowly</h2>
+      <textarea id="text-area" cols="40" rows="10" value=""></textarea>
+    </div>
+
+    <script>
+      const SENTENCE = "TÔI LÀ MỘT ĐỨA NGỐC!!";
+      const textArea = document.getElementById("text-area");
+
+      let chars = 0;
+      // let prev = "";
+      textArea.addEventListener("keydown", (e) => {
+        e.preventDefault();
+        chars = (chars + 1) % (SENTENCE.length + 1);
+        textArea.value = SENTENCE.slice(0, chars);
+      });
+    </script>
+  </body>
+</html>
