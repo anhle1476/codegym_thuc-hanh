@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Caro Simple Game</h1>
+
+    <div id="view"></div>
+    <button id="move">Change Value</button>
+    <script>
+      const viewDOM = document.getElementById("view");
+      let board;
+      let isWin;
+      let turn;
+
+      // initial setup
+      const updateView = () => {
+        let buffer = "";
+
+        board.forEach((row) => {
+          buffer += "<p>";
+          row.forEach((cell) => (buffer += cell + " "));
+          buffer += "</p>";
+        });
+
+        viewDOM.innerHTML = buffer;
+      };
+
+      const gameSetup = () => {
+        board = [];
+        isWin = false;
+        turn = 0;
+
+        for (let i = 0; i < 3; i++) {
+          board.push(["_", "_", "_"]);
+        }
+
+        updateView();
+      };
+      gameSetup();
+
+      // win checker
+      const checkThreeCells = (cell1, cell2, cell3) =>
+        cell1 !== "_" && cell1 === cell2 && cell2 === cell3;
+
+      const checkWin = () => {
+        // row
+        for (let i = 0; i < 3; i++) {
+          if (checkThreeCells(board[i][0], board[i][1], board[i][2])) {
+            isWin = true;
+            return;
+          }
+        }
+
+        // column
+        for (let i = 0; i < 3; i++) {
+          if (checkThreeCells(board[0][i], board[1][i], board[2][i])) {
+            isWin = true;
+            return;
+          }
+        }
+
+        // '\' diagonal
+        if (checkThreeCells(board[0][0], board[1][1], board[2][2])) {
+          isWin = true;
+          return;
+        }
+
+        // '\' diagonal
+        if (checkThreeCells(board[0][2], board[1][1], board[2][0])) {
+          isWin = true;
+        }
+      };
+
+      // move handle
+      const moveHandler = () => {
+        if (isWin) {
+          if (confirm("Do you want to restart?")) {
+            gameSetup();
+            updateView();
+          } else {
+            return;
+          }
+        }
+
+        let x = parseInt(prompt("X: "));
+        let y = parseInt(prompt("Y: "));
+
+        if (board[x][y] !== "_") return alert("Position invalid");
+
+        board[x][y] = turn++ % 2 === 0 ? "X" : "O";
+
+        updateView();
+        checkWin();
+
+        if (isWin) {
+          alert(`${turn % 2 === 0 ? "O" : "X"} win!`);
+        }
+      };
+
+      document.getElementById("move").addEventListener("click", moveHandler);
+    </script>
+  </body>
+</html>
