@@ -14,3 +14,13 @@ function minArray(arr) {
   console.log(`Min: ${min} - Index: ${index}`);
   return index;
 }
+
+let arr1 = [3, 5, 1, 8, -3, 7, 8];
+let arr2 = [7, 12, 6, 9, 20, 56, 89];
+let arr3 = [];
+let arr4 = [0, 0, 0, 0, 0, 0];
+
+minArray(arr1);
+minArray(arr2);
+minArray(arr3);
+minArray(arr4);
