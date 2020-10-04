@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funny Circles</title>
+  </head>
+  <body>
+    <canvas
+      id="myCanvas"
+      width="1368px"
+      height="768px"
+      style="border: 1px solid #d3d3d3"
+    ></canvas>
+
+    <script>
+      var ctx = document.getElementById("myCanvas").getContext("2d");
+
+      class Circle {
+        constructor(x, y, radius) {
+          this.x = x;
+          this.y = y;
+          this.radius = radius;
+          this.color = "rgb(100, 100, 100)";
+        }
+        _random(limit) {
+          return Math.floor(Math.random() * limit);
+        }
+
+        _getRandomHex() {
+          return this._random(255);
+        }
+
+        getRandomColor() {
+          this.color =
+            "rgb(" +
+            this._getRandomHex() +
+            "," +
+            this._getRandomHex() +
+            "," +
+            this._getRandomHex() +
+            ")";
+        }
+
+        getRandomPosition() {
+          this.x = this._random(1368);
+          this.y = this._random(768);
+        }
+
+        getRandomRadius() {
+          this.radius = this._random(80);
+        }
+
+        draw(ctx) {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+        }
+
+        drawRandomCircle(ctx) {
+          this.getRandomColor();
+          this.getRandomPosition();
+          this.getRandomRadius();
+
+          this.draw(ctx);
+        }
+
+        drawRandomCircles(ctx, num) {
+          for (let i = 0; i < num; i++) {
+            this.drawRandomCircle(ctx);
+          }
+        }
+      }
+
+      let circle = new Circle(500, 500, 80);
+      circle.draw(ctx);
+
+      circle.drawRandomCircle(ctx);
+      circle.drawRandomCircle(ctx);
+      circle.drawRandomCircles(ctx, 30);
+    </script>
+  </body>
+</html>
