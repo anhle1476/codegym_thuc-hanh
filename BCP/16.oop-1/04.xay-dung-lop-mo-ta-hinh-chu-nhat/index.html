@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas
+      id="canvas"
+      width="1000px"
+      height="500px"
+      style="border: 1px solid #ccc"
+    ></canvas>
+
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+
+      class Rectangle {
+        constructor(x, y, width, height) {
+          this.setRect(x, y, width, height);
+        }
+
+        setRect(x, y, width, height) {
+          this.x = x;
+          this.y = y;
+          this.width = width;
+          this.height = height;
+        }
+
+        draw(ctx) {
+          ctx.beginPath();
+          ctx.rect(this.x, this.y, this.width, this.height);
+          ctx.fill();
+        }
+
+        changeRect(ctx, x, y, width, height) {
+          this.setRect(x, y, width, height);
+          this.draw(ctx);
+        }
+
+        printRectStats() {
+          const area = this.width * this.height;
+          const perimeter = 2 * (this.width + this.height);
+
+          ctx.font = "20px Arial";
+          ctx.fillText(`Area: ${area}px; Perimeter: ${perimeter}px`, 10, 20);
+        }
+      }
+
+      let rect = new Rectangle(50, 100, 200, 100);
+
+      rect.draw(ctx);
+      rect.changeRect(ctx, 400, 200, 50, 100);
+      rect.printRectStats();
+    </script>
+  </body>
+</html>
