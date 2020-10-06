@@ -1,7 +1,7 @@
 import Object from "./Object.js";
 
 export default class Coin extends Object {
-  constructor() {
-    super("coin", 284, 500, 48, 48);
+  constructor(x, y) {
+    super("coin", x, y, 48, 48);
   }
 }

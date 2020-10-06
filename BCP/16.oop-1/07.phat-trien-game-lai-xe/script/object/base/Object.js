@@ -14,6 +14,10 @@ export default class Object {
     this.y = y;
   }
 
+  increaseY(amount) {
+    this.y += amount;
+  }
+
   setSize(width, height) {
     this.width = width;
     this.height = height;

@@ -1,7 +1,7 @@
 import Object from "./Object.js";
 
 export default class Trunk extends Object {
-  constructor() {
-    super("trunk", 30, 300, 460, 65);
+  constructor(x, y) {
+    super("trunk", x, y, 460, 65);
   }
 }
