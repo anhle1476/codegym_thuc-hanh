@@ -1,15 +1,14 @@
-import Renderer from "./Compositor.js";
 import RacingStreet from "./object/RacingStreet.js";
 import Car from "./object/base/Car.js";
-import Start from "./object/base/Start.js";
-import Coin from "./object/base/Coin.js";
-import Trunk from "./object/base/Trunk.js";
+// import Start from "./object/base/Start.js";
+import MovingLayer from "./setup/layer/MovingLayer.js";
+import Compositor from "./Compositor.js";
 
 import { loadImage } from "./loader.js";
 import { loadSprite } from "./setup/sprite/spriteLoader.js";
+import Obstacles from "./object/Obstacles.js";
 import Speed from "./setup/speed/Speed.js";
-import MovingLayer from "./setup/layer/MovingLayer.js";
-import Compositor from "./Compositor.js";
+import { setupKeyboard } from "./keyboard/setupKeyboard.js";
 
 const ctx = document.getElementById("canvas").getContext("2d");
 
@@ -21,13 +20,6 @@ document
 loadImage("./img/sprite.png").then((image) => {
   const spriteSheet = loadSprite(image);
 
-  const car = new Car(248, 650);
-  // const start = new Start();
-  // const coin = new Coin(50, 400);
-  // const trunk = new Trunk(50, 200);
-
-  const racingStreet = new RacingStreet(spriteSheet);
-
   // object draw
   // draw(ctx, spriteSheet) => spriteSheet.draw(ctx, obj);
   // layer draw
@@ -35,19 +27,24 @@ loadImage("./img/sprite.png").then((image) => {
   // compositor draw
   // drawLayers() => layer.drawObj(this.ctx)
 
+  const gameSpeed = new Speed();
   const compositor = new Compositor(ctx);
 
-  const movingLayer = new MovingLayer(spriteSheet);
+  const car = new Car(248, 650);
+  const racingStreet = new RacingStreet();
+  const obstacles = new Obstacles();
+
+  const movingLayer = new MovingLayer(spriteSheet, gameSpeed);
+
+  movingLayer.addObject(racingStreet);
+  movingLayer.addObject(obstacles);
 
   compositor.addLayer(movingLayer);
 
-  movingLayer.addObject(racingStreet);
+  setupKeyboard(car, gameSpeed);
 
   function gameLoop() {
     if (isPause) return;
-
-    // racingStreet.update(3);
-    // racingStreet.draw(ctx, spriteSheet);
 
     compositor.run();
 

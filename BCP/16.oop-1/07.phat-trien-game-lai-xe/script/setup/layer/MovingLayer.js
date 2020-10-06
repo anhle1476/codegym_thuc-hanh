@@ -1,10 +1,9 @@
-import Speed from "../speed/Speed.js";
 import Layer from "./Layer.js";
 
 export default class MovingLayer extends Layer {
-  constructor(spriteSheet) {
+  constructor(spriteSheet, speed) {
     super(spriteSheet);
-    this.gameSpeed = new Speed();
+    this.gameSpeed = speed;
   }
 
   updateObjects() {
