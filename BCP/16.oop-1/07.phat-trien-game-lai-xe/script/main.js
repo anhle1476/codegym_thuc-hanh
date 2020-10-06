@@ -2,6 +2,7 @@ import RacingStreet from "./object/RacingStreet.js";
 import Car from "./object/base/Car.js";
 // import Start from "./object/base/Start.js";
 import MovingLayer from "./setup/layer/MovingLayer.js";
+import UpperLayer from "./setup/layer/UpperLayer.js";
 import Compositor from "./Compositor.js";
 
 import { loadImage } from "./loader.js";
@@ -35,11 +36,15 @@ loadImage("./img/sprite.png").then((image) => {
   const obstacles = new Obstacles();
 
   const movingLayer = new MovingLayer(spriteSheet, gameSpeed);
+  const upperLayer = new UpperLayer(spriteSheet);
 
   movingLayer.addObject(racingStreet);
   movingLayer.addObject(obstacles);
 
+  upperLayer.addObject(car);
+
   compositor.addLayer(movingLayer);
+  compositor.addLayer(upperLayer);
 
   setupKeyboard(car, gameSpeed);
 
@@ -47,8 +52,6 @@ loadImage("./img/sprite.png").then((image) => {
     if (isPause) return;
 
     compositor.run();
-
-    spriteSheet.draw(ctx, car);
 
     requestAnimationFrame(gameLoop);
   }

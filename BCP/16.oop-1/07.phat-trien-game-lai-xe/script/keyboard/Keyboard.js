@@ -1,16 +1,40 @@
 export default class Keyboard {
   constructor() {
-    this.keys = new Map();
-    this.keyboardHandler = this.keyboardHandler.bind(this);
+    this.keysMap = new Map();
+    this.currentKey = new Map();
+
+    this.keyDownHandler = this.keyDownHandler.bind(this);
+    this.keyUpHandler = this.keyUpHandler.bind(this);
   }
 
-  addKey(keyCode, callback) {
-    this.keys.set(keyCode, callback);
+  addKey(keyType, keyCode, keyDown, keyUp) {
+    this.keysMap.set(keyCode, {
+      type: keyType,
+      changeState: keyDown,
+      restoreState: keyUp,
+    });
   }
 
-  keyboardHandler({ keyCode }) {
-    if (this.keys.has(keyCode)) {
-      this.keys.get(keyCode)();
+  keyDownHandler({ repeat, keyCode }) {
+    if (repeat) return;
+
+    const currentSet = this.keysMap.get(keyCode);
+
+    if (currentSet) {
+      // newer key of the same type overwrite the older ones
+      this.currentKey.set(currentSet.type, keyCode);
+
+      currentSet.changeState();
+    }
+  }
+
+  keyUpHandler({ keyCode }) {
+    const currentSet = this.keysMap.get(keyCode);
+
+    if (currentSet && this.currentKey.get(currentSet.type) === keyCode) {
+      currentSet.restoreState();
+
+      this.currentKey.delete(currentSet.type);
     }
   }
 }
