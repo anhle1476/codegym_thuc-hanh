@@ -21,6 +21,8 @@ export default class TrunksAndCoin {
 
   draw(ctx, spriteSheet) {
     this.trunks.forEach((trunk) => spriteSheet.draw(ctx, trunk));
-    spriteSheet.draw(ctx, this.coin);
+    if (this.coin.isShow) {
+      spriteSheet.draw(ctx, this.coin);
+    }
   }
 }

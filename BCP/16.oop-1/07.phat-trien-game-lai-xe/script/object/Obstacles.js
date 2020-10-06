@@ -2,21 +2,21 @@ import TrunksAndCoin from "./base/TrunksAndCoin.js";
 
 export default class Obstacles {
   constructor() {
-    this.obstaclesList = [this.getNewObstacle()];
+    this.obstaclesList = [this.makeNewObstacle()];
   }
 
-  _randomPosition() {
-    return Math.floor(Math.random() * 346) - 410;
+  getFirstObstacle() {
+    return this.obstaclesList[0];
   }
 
-  getNewObstacle() {
-    return new TrunksAndCoin(this._randomPosition(), -70);
+  makeNewObstacle() {
+    return new TrunksAndCoin(Math.floor(Math.random() * 346) - 410, -70);
   }
 
   generateLastObstacle() {
     const length = this.obstaclesList.length;
-    if (length < 3 && this.obstaclesList[length - 1].baseY > 280) {
-      this.obstaclesList.push(this.getNewObstacle());
+    if (length < 3 && this.obstaclesList[length - 1].baseY > 300) {
+      this.obstaclesList.push(this.makeNewObstacle());
     }
   }
 

@@ -3,7 +3,7 @@ import { CAR_STATE } from "../../controller/gameConst/state.js";
 
 export default class Car extends Object {
   constructor(x, y) {
-    super("car", x, y, 78, 185);
+    super("car", x, y, 78, 184);
     this.setState(CAR_STATE.NORMAL);
   }
 

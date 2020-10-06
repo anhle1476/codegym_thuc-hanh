@@ -5,7 +5,7 @@ function loadObjectsToSprite(spriteSheet) {
   spriteSheet.define("start", 0, 903, 538, 54);
   spriteSheet.define("trunk", 0, 961, 460, 65);
   spriteSheet.define("coin", 486, 976, 48, 48);
-  spriteSheet.define("car", 556, 910, 78, 185);
+  spriteSheet.define("car", 556, 910, 78, 184);
 }
 
 export function loadSprite(image) {

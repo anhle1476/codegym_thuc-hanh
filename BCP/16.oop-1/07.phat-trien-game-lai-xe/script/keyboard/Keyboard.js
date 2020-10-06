@@ -15,14 +15,13 @@ export default class Keyboard {
     });
   }
 
-  keyDownHandler({ repeat, keyCode }) {
-    if (repeat) return;
-
-    const currentSet = this.keysMap.get(keyCode);
+  keyDownHandler(e) {
+    if (e.repeat) return;
+    const currentSet = this.keysMap.get(e.keyCode);
 
     if (currentSet) {
       // newer key of the same type overwrite the older ones
-      this.currentKey.set(currentSet.type, keyCode);
+      this.currentKey.set(currentSet.type, e.keyCode);
 
       currentSet.changeState();
     }
