@@ -5,14 +5,14 @@ import { CAR_STATE, SPEED_STATE } from "../controller/gameConst/state.js";
 export function setupKeyboard(car, speed) {
   const keyboard = new Keyboard();
 
-  const increaseSpeed = () => {
-    speed.setState(SPEED_STATE.BOOST);
-  };
+  setCarKeys(keyboard, car);
+  setSpeedKeys(keyboard, speed);
 
-  const restoreSpeed = () => {
-    speed.setState(SPEED_STATE.NORMAL);
-  };
+  window.addEventListener("keydown", keyboard.keyDownHandler);
+  window.addEventListener("keyup", keyboard.keyUpHandler);
+}
 
+function setCarKeys(keyboard, car) {
   const carMoveLeft = () => {
     car.setState(CAR_STATE.MOVE_LEFT);
   };
@@ -27,9 +27,17 @@ export function setupKeyboard(car, speed) {
 
   keyboard.addKey(KEY_TYPE.DIRECTION, 37, carMoveLeft, carRestoreState);
   keyboard.addKey(KEY_TYPE.DIRECTION, 39, carMoveRight, carRestoreState);
+}
+
+function setSpeedKeys(keyboard, speed) {
+  const increaseSpeed = () => {
+    speed.setState(SPEED_STATE.BOOST);
+  };
+
+  const restoreSpeed = () => {
+    speed.setState(SPEED_STATE.NORMAL);
+  };
+
   keyboard.addKey(KEY_TYPE.SPEED, 17, increaseSpeed, restoreSpeed);
   keyboard.addKey(KEY_TYPE.SPEED, 38, increaseSpeed, restoreSpeed);
-
-  window.addEventListener("keydown", keyboard.keyDownHandler);
-  window.addEventListener("keyup", keyboard.keyUpHandler);
 }
