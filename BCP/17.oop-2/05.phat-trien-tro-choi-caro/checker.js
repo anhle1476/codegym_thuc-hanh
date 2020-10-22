@@ -49,10 +49,10 @@ export default class Checker {
 
     // check "/" diagonal
     for (let x = 4; x < 20; x++) {
-      for (let y = 4; y < 20; y++) {
+      for (let y = 0; y < 16; y++) {
         cells = [];
         for (let i = 0; i < 5; i++) {
-          cells.push(board[x - i][y - i]);
+          cells.push(board[x - i][y + i]);
         }
         if (this.check5Cells(cells)) {
           return true;
