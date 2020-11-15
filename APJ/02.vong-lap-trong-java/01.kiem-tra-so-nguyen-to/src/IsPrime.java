@@ -6,6 +6,11 @@ public class IsPrime {
         System.out.println("Enter a number: ");
         int number = input.nextInt();
 
+        if (number < 2) {
+            System.out.println(number + " is not a prime");
+            return;
+        }
+
         int i = 2;
         boolean check = true;
         while (i <= Math.sqrt(number)) {
