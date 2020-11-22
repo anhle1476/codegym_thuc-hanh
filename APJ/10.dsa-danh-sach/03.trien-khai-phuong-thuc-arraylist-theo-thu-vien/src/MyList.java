@@ -4,7 +4,7 @@ import java.util.Arrays;
 public class MyList<E> {
     private int size = 0;
     static final int DEFAULT_CAPACITY = 10;
-    private Object[] objects = new Object[DEFAULT_CAPACITY];
+    private E[] objects = (E[]) new Object[DEFAULT_CAPACITY];
 
     public MyList() {}
 
@@ -17,7 +17,7 @@ public class MyList<E> {
     public int size() {return size;}
 
     public E get(int index) {
-        return (E) objects[index];
+        return objects[index];
     }
 
     public boolean contains(E e) {return indexOf(e) != -1;}
@@ -56,27 +56,25 @@ public class MyList<E> {
     }
 
     private void growCapacity(int newCapacity) {
-        Object[] newObjects = new Object[newCapacity];
+        E[] newObjects = (E[]) new Object[newCapacity];
         System.arraycopy(objects, 0, newObjects, 0, size);
         objects = newObjects;
     }
 
     public E remove(int index) {
         if (isIndexOutOfRange(index, size - 1)){ return null;}
-        Object holder = objects[index];
-        for (int i = index; i < size - 1; i++) {
-            objects[i] = objects[i + 1];
-        }
+        E holder = objects[index];
+        if (size - 1 - index >= 0) System.arraycopy(objects, index + 1, objects, index, size - 1 - index);
         objects[size - 1] = null;
         size--;
-        return (E) holder;
+        return holder;
     }
     private boolean isIndexOutOfRange(int index, int limit) {
         return index < 0 && index > limit;
     }
 
     public MyList<E> clone() {
-        return new MyList<>((E[]) objects);
+        return new MyList<>(objects);
     }
 
     @Override
