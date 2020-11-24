@@ -3,9 +3,8 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         int[] array = {2, 5, 1, 3, 6, 9, 7, 10, 4, 8};
-        System.out.println("Before " + Arrays.toString(array));
-        System.out.println("Insertion sort");
         insertionSort(array);
+        System.out.println(Arrays.toString(array));
     }
 
     public static void insertionSort(int[] array) {
@@ -17,13 +16,11 @@ public class Main {
                     break;
                 }
             }
-            System.out.println("After " + (completeBlock + 1) + " loops: " + Arrays.toString(array));
             completeBlock++;
         }
     }
 
     public static void insertElement(int[] array, int fromIndex, int insertIndex) {
-        System.out.println("Insert from index " + fromIndex + " to index " + insertIndex);
         int holder = array[fromIndex];
         if (fromIndex - insertIndex >= 0)
             System.arraycopy(array, insertIndex, array, insertIndex + 1, fromIndex - insertIndex);
