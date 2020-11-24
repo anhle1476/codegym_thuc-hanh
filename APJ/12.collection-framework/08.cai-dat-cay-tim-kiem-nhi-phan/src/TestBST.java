@@ -10,8 +10,9 @@ public class TestBST {
         tree.insert("Peter");
         tree.insert("Daniel");
         //traverse tree
-        System.out.println("Postorder (sorted): ");
-        tree.postorderTraversal();
+        System.out.println("Inorder: ");
+        tree.inorderTraversal();
         System.out.println("The number of nodes is: " + tree.getSize());
+        tree.printTree();
     }
 }
