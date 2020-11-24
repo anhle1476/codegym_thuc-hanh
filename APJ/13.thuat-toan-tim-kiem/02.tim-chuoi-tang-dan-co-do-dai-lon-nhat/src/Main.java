@@ -14,7 +14,7 @@ public class Main {
             LinkedList<Character> list = new LinkedList<>(); // O(1)
             list.add(string.charAt(i)); // O(1)
             for (int j = i + 1; j < string.length(); j++) { // O(n)
-                if (string.charAt(j) < list.getLast())
+                if (string.charAt(j) > list.getLast())
                     list.add(string.charAt(j)); // O(1)
             }
 
