@@ -7,5 +7,5 @@ public class Main {
         result = calculatorProxy.add(2, Double.MAX_VALUE);
         System.out.println("2 + Double.MAX_VALUE = " + result);
     }
-    
+
 }
