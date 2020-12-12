@@ -75,8 +75,10 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     private void handleRemoveNode(TreeNode<E> parentNode, TreeNode<E> removingNode) {
-        if (removingNode == null) return;
-        if (removingNode.left == null) {
+        boolean nodeNotFount = removingNode == null;
+        if (nodeNotFount) return;
+        boolean removingNodeHasNoLeftChild = removingNode.left == null;
+        if (removingNodeHasNoLeftChild) {
             handleRemovingNodeHasNoLeftChild(parentNode, removingNode);
         } else {
             handleRemovingNodeHasLeftChild(removingNode);
@@ -85,7 +87,8 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     private void handleRemovingNodeHasNoLeftChild(TreeNode<E> parentNode, TreeNode<E> removingNode) {
-        if (parentNode == null) {
+        boolean isRemovingRootNode = parentNode == null;
+        if (isRemovingRootNode) {
             root = removingNode.right;
         } else {
             choseBranchAndSetChildNode(parentNode, removingNode.element, removingNode.right);
