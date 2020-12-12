@@ -1,0 +1,14 @@
+B1:
+SELECT * FROM customers;
+
+B2:
+SELECT customerName, phone, city, country FROM customers;
+
+B3:
+SELECT * FROM customers WHERE customerName = 'Atelier Graphique';
+
+B4:
+SELECT * FROM customers WHERE customername like '%A%';
+
+B5:
+SELECT * FROM customers WHERE city IN ('Nantes',' Las Vegas',' Warszawa','NYC');
