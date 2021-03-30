@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #btn-group {
+        margin: 20px 0;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="asc" method=""></form>
+    <div>
+      <input type="number" name="left" id="left" />
+      <input type="number" name="right" id="right" />
+    </div>
+    <div id="btn-group">
+      <button id="add">Addition (+)</button>
+      <button id="subtract">Subtraction (-)</button>
+      <button id="multiply">Multiplication (*)</button>
+      <button id="divide">Division (/)</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+      const leftDOM = document.getElementById("left");
+      const rightDOM = document.getElementById("right");
+      const resultDOM = document.getElementById("result");
+
+      let left = 0;
+      let right = 0;
+
+      const getValue = () => {
+        left = leftDOM.value;
+        right = rightDOM.value;
+      };
+
+      document.getElementById("btn-group").addEventListener("click", (e) => {
+        getValue();
+        let result;
+        let id = e.target.id;
+        switch (id) {
+          case "add":
+            result = left + right;
+            break;
+          case "subtract":
+            result = left - right;
+            break;
+          case "multiply":
+            result = left * right;
+            break;
+          case "divide":
+            result = right == 0 ? "Can't divide by 0" : left / right;
+            break;
+          default:
+            return;
+        }
+
+        resultDOM.innerText = `Result ${id}: ${result}`;
+      });
+    </script>
+  </body>
+</html>

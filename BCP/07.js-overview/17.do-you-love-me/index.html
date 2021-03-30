@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      button {
+        box-sizing: border-box;
+        width: 60px;
+        height: 30px;
+        position: relative;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Do you love me</h1>
+    <button id="yes">Yes</button>
+    <button id="no" style="top: 0px; left: 0px">No</button>
+
+    <script>
+      // window sizes
+      let maxLeftOffset, maxTopOffset;
+
+      const updateWindowSize = () => {
+        maxLeftOffset = window.innerWidth - 150;
+        maxTopOffset = window.innerHeight - 150;
+      };
+
+      updateWindowSize();
+
+      window.addEventListener("resize", updateWindowSize);
+
+      // Yes button
+      document
+        .getElementById("yes")
+        .addEventListener("click", () => alert("<3"));
+
+      // No button
+      const noBtn = document.getElementById("no");
+
+      noBtn.addEventListener("mouseover", () => {
+        // Random generate position
+        noBtn.style.top = Math.floor(Math.random() * maxTopOffset) + "px";
+        noBtn.style.left = Math.floor(Math.random() * maxLeftOffset) + "px";
+      });
+    </script>
+  </body>
+</html>

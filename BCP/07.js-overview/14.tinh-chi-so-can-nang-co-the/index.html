@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let weight = parseInt(prompt("Can nang (kg)"));
+      let height = parseInt(prompt("Chieu cao (cm)")) / 100;
+      const bmi = weight / (height * height);
+      document.write(
+        bmi < 18
+          ? "Underweight"
+          : bmi < 25
+          ? "Normal"
+          : bmi < 30
+          ? "Overweight"
+          : "Obese"
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+<body>
+<a th:href="@{/}">Return to upload form</a>
+<h2 th:utext="${description}">result</h2>
+<hr/>
+<ul th:each="entry, stats : ${uploadedFiles}">
+    <li>
+        <h4 th:utext="${entry.value}"></h4>
+        <p th:utext="${entry.key.path}"></p>
+    </li>
+</ul>
+</body>
+</html>

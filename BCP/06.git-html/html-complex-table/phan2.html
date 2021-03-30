@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      h1 {
+        text-align: center;
+        color: #337dfa;
+      }
+
+      table {
+        border-collapse: collapse;
+        margin: auto;
+      }
+
+      th,
+      td {
+        width: 70px;
+        height: 30px;
+        text-align: center;
+        padding: 10px;
+      }
+
+      th {
+        font-size: 20px;
+      }
+
+      /* table header */
+
+      tr:first-child th {
+        background-color: #ffb53e;
+        font-weight: bold;
+        color: white;
+        border: 1px solid white;
+      }
+
+      tr:first-child th:first-child {
+        background-color: red;
+      }
+
+      tr:first-child th:last-child {
+        background-color: #337dfa;
+      }
+
+      tr:nth-child(2) th {
+        font-weight: normal;
+      }
+
+      /* calendar */
+      tr:nth-child(2) th:first-child,
+      tr:nth-child(1n + 3) td:first-child span {
+        color: red;
+      }
+
+      tr:nth-child(2) th:last-child,
+      tr:nth-child(1n + 3) td:last-child span {
+        color: #337dfa;
+      }
+
+      tr:nth-child(1n + 3),
+      tr:nth-child(1n + 3) td {
+        border: 2px solid #666;
+      }
+
+      td span {
+        font-weight: 600;
+        font-size: 30px;
+        margin-right: 5px;
+      }
+    </style>
+    <title>Lịch</title>
+  </head>
+  <body>
+    <h1>Tháng 10 - October</h1>
+    <table>
+      <tr>
+        <th>C.Nhật</th>
+        <th>T.Hai</th>
+        <th>T.Ba</th>
+        <th>T.Tư</th>
+        <th>T.Năm</th>
+        <th>T.Sáu</th>
+        <th>T.Bảy</th>
+      </tr>
+      <tr>
+        <th>Sun</th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><span>1</span>13</td>
+        <td><span>2</span>14</td>
+        <td><span>3</span>15</td>
+      </tr>
+      <tr>
+        <td><span>4</span>16</td>
+        <td><span>5</span>17</td>
+        <td><span>6</span>18</td>
+        <td><span>7</span>19</td>
+        <td><span>8</span>20</td>
+        <td><span>9</span>21</td>
+        <td><span>10</span>22</td>
+      </tr>
+      <tr>
+        <td><span>11</span>23</td>
+        <td><span>12</span>24</td>
+        <td><span>13</span>25</td>
+        <td><span>14</span>26</td>
+        <td><span>15</span>27</td>
+        <td><span>16</span>28</td>
+        <td><span>17</span>29</td>
+      </tr>
+      <tr>
+        <td><span>18</span>1.9</td>
+        <td><span>19</span>2</td>
+        <td><span>20</span>3</td>
+        <td><span>21</span>4</td>
+        <td><span>22</span>5</td>
+        <td><span>23</span>6</td>
+        <td><span>24</span>7</td>
+      </tr>
+      <tr>
+        <td><span>25</span>8</td>
+        <td><span>26</span>9</td>
+        <td><span>27</span>10</td>
+        <td><span>28</span>11</td>
+        <td><span>29</span>12</td>
+        <td><span>30</span>13</td>
+        <td><span>31</span>14</td>
+      </tr>
+    </table>
+  </body>
+</html>

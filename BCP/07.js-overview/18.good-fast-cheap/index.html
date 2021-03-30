@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      :root {
+        --good-primary: #53d456;
+        --good-secondary: #6fb06d;
+        --fast-primary: #6f6dc2;
+        --fast-secondary: #7578a3;
+        --cheap-primary: #c35265;
+        --cheap-secondary: #a46b73;
+      }
+
+      /* container */
+      #container {
+        width: 300px;
+        display: grid;
+        grid-template-columns: 70px 1fr;
+        align-items: center;
+      }
+
+      #container p {
+        font-weight: bold;
+        font-size: 22px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      /* switch button */
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 20px;
+      }
+
+      .switch input {
+        opacity: 0;
+      }
+
+      .switch .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #aaa;
+        border-radius: 10px;
+      }
+
+      .switch .slider::before {
+        content: "";
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: -5px;
+        left: 0px;
+        background-color: #ccc;
+        box-shadow: -1px 1px rgba(100, 100, 100, 0.6);
+        border-radius: 50%;
+        transition: all 0.2s ease;
+      }
+
+      .switch input:checked + .slider::before {
+        left: 30px;
+      }
+
+      /* custom for each btn */
+      #good:checked + .slider {
+        background-color: var(--good-secondary);
+      }
+
+      #good:checked + .slider::before {
+        background-color: var(--good-primary);
+      }
+
+      #fast:checked + .slider {
+        background-color: var(--fast-secondary);
+      }
+
+      #fast:checked + .slider::before {
+        background-color: var(--fast-primary);
+      }
+
+      #cheap:checked + .slider {
+        background-color: var(--cheap-secondary);
+      }
+
+      #cheap:checked + .slider::before {
+        background-color: var(--cheap-primary);
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="container">
+      <label class="switch">
+        <input type="checkbox" id="good" class="btn" />
+        <span class="slider"></span>
+      </label>
+      <p>GOOD</p>
+      <label class="switch">
+        <input type="checkbox" id="fast" class="btn" />
+        <span class="slider"></span>
+      </label>
+      <p>FAST</p>
+      <label class="switch">
+        <input type="checkbox" id="cheap" class="btn" />
+        <span class="slider"></span>
+      </label>
+      <p>CHEAP</p>
+    </form>
+
+    <script>
+      const goodBtn = document.getElementById("good");
+      const fastBtn = document.getElementById("fast");
+      const cheapBtn = document.getElementById("cheap");
+
+      let queue = [];
+
+      const toggleBtn = (btn) => {
+        btn.checked = !btn.checked;
+      };
+
+      const toggleHandler = ({ target }) => {
+        // push/remove current btn to/from queue
+        if (target.checked) {
+          queue.push(target.id);
+        } else {
+          queue = queue.filter((element) => element !== target.id);
+        }
+
+        // if queue is full -> remove & toggle first element
+        if (queue.length === 3) {
+          switch (queue.shift()) {
+            case "good":
+              toggleBtn(goodBtn);
+              break;
+            case "fast":
+              toggleBtn(fastBtn);
+              break;
+            case "cheap":
+              toggleBtn(cheapBtn);
+          }
+        }
+      };
+
+      document.querySelectorAll(".btn").forEach((btn) => {
+        btn.addEventListener("change", toggleHandler);
+      });
+    </script>
+  </body>
+</html>

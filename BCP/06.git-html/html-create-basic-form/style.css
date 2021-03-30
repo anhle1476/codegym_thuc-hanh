@@ -1,0 +1,97 @@
+:root {
+  --title-p1: #f94f3f;
+  --form-p1: #d5fdfd;
+  --title-p2: #fdf0aa;
+  --form-p2: #d2f5d7;
+  --text-label: #22468f;
+  --text-p1-form: #e77b4a;
+  --text-p2-form: #1a1b01;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Utility classes */
+/* background */
+.bg-p1-title {
+  background-color: var(--title-p1);
+}
+
+.bg-p1-form {
+  background-color: var(--form-p1);
+}
+
+.bg-p2-title {
+  background-color: var(--title-p2);
+}
+
+.bg-p2-form {
+  background-color: var(--form-p2);
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+/* text color */
+.text-white {
+  color: #fff;
+}
+
+.text-label {
+  color: var(--text-label);
+}
+
+.text-p1-form {
+  color: var(--text-p1-form);
+}
+
+.text-p2-form {
+  color: var(--text-p2-form);
+}
+
+/* padding */
+.p-1 {
+  padding: 5px;
+}
+
+/* Form */
+form {
+  width: 500px;
+  display: block;
+  padding: 5px;
+}
+
+form .title {
+  text-align: center;
+  padding: 5px;
+}
+
+.grid-container {
+  padding: 10px;
+  display: grid;
+  gap: 10px;
+}
+
+.grid-form {
+  grid-template-columns: 100px 1fr;
+}
+
+.grid-checkbox-group {
+  grid-template-columns: repeat(3, 1fr);
+  color: var(--text-p1-form);
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-group input {
+  margin: 0 5px;
+}

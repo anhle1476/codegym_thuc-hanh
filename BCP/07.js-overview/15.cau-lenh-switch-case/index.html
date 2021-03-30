@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="number" min="1" max="12" id="month" />
+    <button onclick="handler()" id="submit">Tính số ngày</button>
+    <p id="result"></p>
+    <script>
+      const monthDOM = document.getElementById("month");
+      const resultDOM = document.getElementById("result");
+
+      const handler = () => {
+        const month = parseInt(monthDOM.value);
+        switch (month) {
+          case 2:
+            resultDOM.innerText = `Tháng ${month} có 28 hoặc 29 ngày`;
+            break;
+          case 4:
+          case 6:
+          case 9:
+          case 11:
+            resultDOM.innerText = `Tháng ${month} có 30 ngày`;
+            break;
+          default:
+            resultDOM.innerText = `Tháng ${month} có 31 ngày`;
+        }
+      };
+    </script>
+  </body>
+</html>

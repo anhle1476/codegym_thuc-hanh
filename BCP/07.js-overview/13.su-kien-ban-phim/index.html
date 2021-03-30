@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img
+      id="nobita"
+      src="nobita.jpg"
+      style="position: absolute; left: 0; top: 0"
+      height="100"
+      width="80"
+    />
+    <script>
+      const element = document.getElementById("nobita");
+
+      const moveElement = (direction, length) => {
+        element.style[direction] =
+          parseInt(element.style[direction]) + length + "px";
+      };
+
+      const leftArrow = () => moveElement("left", -5);
+      const rightArrow = () => moveElement("left", 5);
+      const upArrow = () => moveElement("top", -5);
+      const downArrow = () => moveElement("top", 5);
+
+      const keyboardHandler = ({ keyCode }) => {
+        switch (keyCode) {
+          case 37:
+            leftArrow();
+            break;
+          case 39:
+            rightArrow();
+            break;
+          case 38:
+            upArrow();
+            break;
+          case 40:
+            downArrow();
+            break;
+        }
+      };
+
+      window.addEventListener("keydown", keyboardHandler);
+    </script>
+  </body>
+</html>

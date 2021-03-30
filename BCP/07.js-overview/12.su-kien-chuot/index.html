@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #ball {
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="/images.png" alt="ball" id="ball" />
+    <p>Click button below to move the image to the right</p>
+    <button id="btn">Click Me</button>
+    <script>
+      let ball = document.getElementById("ball");
+
+      ball.style.left = "0px";
+
+      document.getElementById("btn").addEventListener("click", () => {
+        ball.style.left = parseInt(ball.style.left) + 10 + "px";
+      });
+    </script>
+  </body>
+</html>
